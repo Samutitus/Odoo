@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record model="ir.ui.view" id="ventas_list_view" >
+        <field name="name">ventas.view.tree</field>
+        <field name="model">ventas</field>
+        <field name="arch" type="xml">
+            <tree>
+                    <field name="name"/>
+                    <field name="num"/>
+                    <field name="description"/>
+                    <field name="precio"/>
+                    <field name="fecha"/>
+                    <field name="comprador"/>
+                    <field name="vendedor"/>
+                    <field name="productos"/>           
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="almacen_list_view" >
+        <field name="name">almacen.view.tree</field>
+        <field name="model">almacen</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="direccion"/>
+                <field name="productos"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="comprador_list_view" >
+        <field name="name">comprador.view.tree</field>
+        <field name="model">comprador</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="description"/>
+                <field name="ventas"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_ventas_form" model="ir.ui.view">
+        <field name="name">ventas.view.form</field>
+        <field name="model">ventas</field>
+        <field name="arch" type="xml">
+            <form string="Ventas">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="num"/>
+                        <field name="description"/>
+                        <field name="precio"/>
+                        <field name="fecha"/>
+                        <field name="comprador"/>
+                        <field name="vendedor"/>
+                        <field name="productos"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_almacen_form" model="ir.ui.view">
+        <field name="name">almacen.view.form</field>
+        <field name="model">almacen</field>
+        <field name="arch" type="xml">
+            <form string="Almacen">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="direccion"/>
+                        <field name="productos"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_comprador_form" model="ir.ui.view">
+        <field name="name">comprador.view.form</field>
+        <field name="model">comprador</field>
+        <field name="arch" type="xml">
+            <form string="Comprador">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="ventas"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_vendedor_form" model="ir.ui.view">
+        <field name="name">vendedor.view.form</field>
+        <field name="model">vendedor</field>
+        <field name="arch" type="xml">
+            <form string="Vendedor">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="productos"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_productos_form" model="ir.ui.view">
+        <field name="name">productos.view.form</field>
+        <field name="model">productos</field>
+        <field name="arch" type="xml">
+            <form string="Productos">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                        <field name="state"/>
+                        <field name="precioUnidad"/>
+                        <field name="vendedor"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record model="ir.ui.view" id="vendedor_list_view" >
+        <field name="name">vendedor.view.tree</field>
+        <field name="model">vendedor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="productos"/>
+                <field name="description"/>
+            </tree>
+        </field>
+    </record>
+
+    
+
+    <record model="ir.ui.view" id="productos_list_view" >
+        <field name="name">productos.view.tree</field>
+        <field name="model">productos</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="description"/>
+                <field name="precioUnidad"/>
+                
+                
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="almacen_action_window">
+        <field name="name">Almacen</field>
+        <field name="res_model">almacen</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="ventas_action_window">
+        <field name="name">Ventas</field>
+        <field name="res_model">ventas</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="comprador_action_window">
+        <field name="name">Comprador</field>
+        <field name="res_model">comprador</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="vendedor_action_window">
+        <field name="name">Vendedor</field>
+        <field name="res_model">vendedor</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <record model="ir.actions.act_window" id="productos_action_window">
+        <field name="name">Productos</field>
+        <field name="res_model">productos</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+<!-- Top menu item -->
+<menuitem name="SAG" id="sag_root_menu" sequence="0"/>
+
+
+<menuitem name="Compradores" id="comprador_menu" parent="sag_root_menu" action="comprador_action_window" />
+<menuitem name="Vendedores" id="vendedor_menu" parent="sag_root_menu" action="vendedor_action_window" />
+<menuitem name="Productos" id="productos_menu" parent="sag_root_menu" action="productos_action_window" />
+<menuitem name="Almacenes" id="almacen_menu" parent="sag_root_menu" action="almacen_action_window" />
+<menuitem name="Ventas" id="ventas_menu" parent="sag_root_menu" action="ventas_action_window" />
+
+</odoo>
